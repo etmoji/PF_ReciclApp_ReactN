@@ -6,6 +6,7 @@ import CameraScreen from '../screens/CameraScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import { Ionicons } from '@expo/vector-icons';
 import PlasticScreen from '../screens/PlasticScreen';
+import ScanScreen from '../screens/ScanScreen';
 
 
 const Tab = createBottomTabNavigator();
@@ -26,20 +27,20 @@ export default function BottomTabNavigator() {
           },
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
-            if (route.name === 'Home') {
+            if (route.name === 'Inicio') {
               iconName = focused ? 'home' : 'home-outline';
-            } else if (route.name === 'Scan') {
+            } else if (route.name === 'Cámara') {
               iconName = focused ? 'camera' : 'camera-outline';
-            } else if (route.name === 'Options') {
+            } else if (route.name === 'Opciones') {
               iconName = focused ? 'settings' : 'settings-outline';
             }
             return <Ionicons name={iconName} size={24} color={color} />;
           },
         })}
       >
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Scan" component={CameraScreen} />
-        <Tab.Screen name="Options" component={ProfileScreen} />
+        <Tab.Screen name="Inicio" component={HomeScreen} />
+        <Tab.Screen name="Cámara" component={ScanScreen} />
+        <Tab.Screen name="Opciones" component={ProfileScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
