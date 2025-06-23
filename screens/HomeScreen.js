@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image } from 'react
 const categories = [
   { title: 'Papel', image: require('../assets/images/paper.jpg'), route: 'PaperScreen' },
   { title: 'Metal', image: require('../assets/images/metal.jpg'), route: 'MetalScreen' },
-  { title: 'Cartón', image: require('../assets/images/cardboard.jpg'), route: 'CardboardScreen' },
+  { title: 'Cartón', image: require('../assets/images/cardboard.jpeg'), route: 'CardboardScreen' },
   { title: 'Plástico', image: require('../assets/images/plastic.jpeg'), route: 'PlasticScreen' },
   { title: 'Vidrio', image: require('../assets/images/glass.jpeg'), route: 'GlassScreen' },
   { title: 'Composta', image: require('../assets/images/compost.jpeg'), route: 'CompostScreen' },
