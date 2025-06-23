@@ -9,12 +9,19 @@ import CardboardScreen from '../screens/CardBoardScreen';
 import OtherScreen from '../screens/OtherScreen'; 
 import CompostScreen from '../screens/CompostScreen'; 
 import GlassScreen from '../screens/GlassScreen'; 
+import WelcomeScreen from '../screens/WelcomeScreen';
+import CenterScreen from '../screens/CenterScreen';
 
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigation() {
   return (
-    <Stack.Navigator initialRouteName="MainTabs">
+    <Stack.Navigator initialRouteName="WelcomeScreen">
+      <Stack.Screen
+        name="WelcomeScreen"
+        component={WelcomeScreen}
+        options={{ headerShown: false }}    
+      />
       <Stack.Screen
         name="MainTabs"
         component={BottomTabNavigator}
@@ -60,6 +67,11 @@ export default function AppNavigation() {
         component={GlassScreen}
         options={{ title: 'Reciclaje de Vidrio' }}
       />
+      <Stack.Screen
+        name="CenterDetailsScreen"
+        component={CenterScreen}
+        options={{ title: 'Centro de Acopio' }}
+      />              
     </Stack.Navigator>
   );
 }

@@ -1,5 +1,6 @@
 {
   "expo": {
+    "assetBundlePatterns": [ "assets/**/*" ],
     "name": "PF_ReciclApp_ReactNative",
     "slug": "PF_ReciclApp_ReactNative",
     "version": "1.0.0",
@@ -13,15 +14,25 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Esta aplicación necesita acceso a la cámara para tomar fotos.",
+        "NSPhotoLibraryUsageDescription": "Esta aplicación necesita acceso a la galería para seleccionar imágenes."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "CAMERA",
+        "WRITE_EXTERNAL_STORAGE",
+        "READ_EXTERNAL_STORAGE"
+      ]
     },
+    "jsEngine": "jsc",
     "web": {
       "favicon": "./assets/favicon.png"
     }

@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image } from 'react-native';
+
+import centersFile from '../assets/data/centers.json';
+import imageUbi from '../assets/images/ub.png';
 
 const categories = [
   { title: 'Papel', image: require('../assets/images/paper.jpg'), route: 'PaperScreen' },
@@ -13,6 +16,27 @@ const categories = [
 
 export default function HomeScreen({ navigation }) {
   const [selectedTab, setSelectedTab] = useState('Basura');
+  const [centers, setCenters] = useState([]);
+
+  useEffect(() => {
+    const loadCenters = async () => {
+      setCenters(centersFile);
+    };
+    loadCenters();
+  }, []);
+
+  const centerContent = centers.map((center) => ({
+    Name: center.Name,
+    Latitude: center.Latitude,
+    Longitude: center.Longitude,
+    imageUrl: center.imageUrl,
+    Description: center.Description,
+    Address: center.Address,
+    Hours: center.Hours,
+    Phone: center.Phone,
+    Materials_Recycled: center.Materials_Recycled,
+    url_google: center.url_google,
+  }));
 
   const renderCard = ({ item }) => (
     <TouchableOpacity style={styles.card} onPress={() => navigation.navigate(item.route)}>
@@ -47,7 +71,19 @@ export default function HomeScreen({ navigation }) {
       {selectedTab === 'Basura' ? (
         <FlatList data={categories} keyExtractor={(item) => item.title} renderItem={renderCard} />
       ) : (
-        <Text style={{ padding: 16 }}>Aquí se listarán los centros de acopio desde un archivo o API.</Text>
+        <FlatList
+          data={centers}
+          keyExtractor={(item) => item.Name}
+          renderItem={({ item }) => (
+            <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('CenterDetailsScreen', { center: item })}>
+              <Image source={imageUbi} style={styles.cardImage} />
+              <View style={styles.cardText}>
+                <Text style={styles.cardTitle}>{item.Name}</Text>
+                <Text style={styles.cardSubtitle}>{item.Address}</Text>
+              </View>
+            </TouchableOpacity>
+          )}
+        />
       )}
     </View>
   );

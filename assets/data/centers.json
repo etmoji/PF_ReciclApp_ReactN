@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "Name": "Ecoindustrias Tlaczani S.A de C.V",
+    "Description": "Reciclaje de residuos industriales y materiales reciclables",
+    "Address": "Rio Atoyac 5 Domingo Arenas",
+    "Latitude": 19.182591163524396,
+    "Longitude": -98.2985895239716,
+    "Direccion": "90754 Zacatelco, Tlaxcala, México",
+    "Phone": "771 426 80 71",
+    "Hours": "Recicladora",
+    "Materials_Recycled": "Empresa dedica al Reciclaje de plasticos como: PET HDPE LDPE PP",
+    "url_google": "https://maps.app.goo.gl/Mdz9nzX23ZptDgLG9",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2twbX53cKY1ZexjD7n9HPuFCL-AC3DKO5BQ&s"
+  },
+  {
+    "id": 2,
+    "Name": "Recicladora Fierros y Metales Esmelter",
+    "Description": "Compra-Venta de Fierro Pesado,Lamina,Metales,Carton y Fierro Comercial",
+    "Address": "Quinta Sección Quinta el Carmen",
+    "Latitude": 19.173088845717096,
+    "Longitude": -98.22528802556747,
+    "Direccion": "90790 Papalotla, Tlaxcala, México",
+    "Phone": "222 729 73 39",
+    "Hours": "Recicladora",
+    "Materials_Recycled": "Papel Cartón  Metales  Electrónicos  Baterías",
+    "url_google": "https://maps.app.goo.gl/i1ZdbU7PkPHAnM6x7",
+    "imageUrl": "https://scontent-qro1-1.xx.fbcdn.net/v/t39.30808-6/242395871_108104644959496_4178575606528869532_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=tTzoR7dHavQQ7kNvwHHIwjY&_nc_oc=AdlbI7fUMGUrlVcpc5ppctwhcp4wRys3fuBgtyOPTPtw_Fa1genhXMC6mB4QeMm2jtpCBXNMcX50G1zsH3yAc7JA&_nc_zt=23&_nc_ht=scontent-qro1-1.xx&_nc_gid=J71Nt7WLc4cOqGwLZ-4-OQ&oh=00_AfMdTtGuRnmuLrdp6b_qZE3XK2sFwblip16MDb_2m84HVw&oe=685E0598"
+  },
+  {
+    "id": 3,
+    "Name": "Recicladora Padilla",
+    "Description": "Reciclaje de materiales diversos",
+    "Address": "San Andrés, San Andrés, Barrio de Tzautla",
+    "Latitude": 19.39497733050388,
+    "Longitude": -98.11349514129371,
+    "Direccion": "90491 San Andrés Ahuashuatepec, Tlaxcala, México",
+    "Phone": "241 156 13 31",
+    "Hours": "Recicladora",
+    "Materials_Recycled": "Plástico  Metales  Baterías",
+    "url_google": "https://maps.app.goo.gl/N5frG4mdADNbBEhu7",
+    "imageUrl": "https://reciclamexico.com.mx/wp-content/uploads/2024/06/logotipo-recicla-mexico.png"
+  },
+  {
+    "id": 4,
+    "Name": "Retrotrash",
+    "Description": "Reciclaje y reutilización de materiales",
+    "Address": "C. Miguel Guridi y Alcocer 35a, Miraflores",
+    "Latitude": 19.31633602058639,
+    "Longitude": -98.2327273385283,
+    "Direccion": "90100 Tlaxcala (ciudad), Tlaxcala, México",
+    "Phone": "552 769 62 09",
+    "Hours": "Recicladora",
+    "Materials_Recycled": "Papel Cartón  Plástico  Metales  Vidrio",
+    "url_google": "https://maps.app.goo.gl/5xwLhiuj5LK4nS8M9",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWKq7vd6nVPsCjQ0jj3uTTot71rNoUw_PVFg&s"
+  }
+]

@@ -13,7 +13,7 @@ const { width } = Dimensions.get('window');
 export default function WelcomeScreen({ navigation }) {
   return (
     <ImageBackground
-      source={require('../assets/images/welcome_bg.jpg')} // mismo fondo que en Android
+      source={require('../assets/images/welcome_bg.png')} // mismo fondo que en Android
       style={styles.background}
       resizeMode="cover"
     >
@@ -27,7 +27,7 @@ export default function WelcomeScreen({ navigation }) {
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('Inicio')} // o 'HomeScreen'
+          onPress={() => navigation.navigate('MainTabs')}
         >
           <Text style={styles.buttonText}>Start</Text>
         </TouchableOpacity>
