@@ -9,13 +9,28 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import * as Location from 'expo-location';
 
 export default function ScanScreen({ navigation }) {
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
+  const [location, setLocation] = useState(null);
+
+  const getLocation = async () => {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== 'granted') {
+      Alert.alert('Permisos denegados', 'Se necesita acceso a la ubicación.');
+      return null;
+    }
+    let currentLocation = await Location.getCurrentPositionAsync({});
+    setLocation(currentLocation.coords);
+    return currentLocation.coords;
+  };
 
   const pickImage = async (fromCamera = false) => {
+    await getLocation();
+
     let permissionResult = await ImagePicker.requestCameraPermissionsAsync();
     if (permissionResult.granted === false) {
       Alert.alert('Permisos requeridos', 'Se necesita permiso de cámara');
@@ -88,6 +103,14 @@ export default function ScanScreen({ navigation }) {
           <Text style={styles.resultText}>
             Confianza: {result.confidence}%
           </Text>
+          <TouchableOpacity
+            style={styles.buttonMap}
+            onPress={() =>
+              navigation.navigate('MapScreen', { location })
+            }
+          >
+            <Text style={styles.buttonText}>Ver en el mapa</Text>
+          </TouchableOpacity>
         </View>
       )}
     </View>
@@ -109,7 +132,14 @@ const styles = StyleSheet.create({
     padding: 12,
     borderRadius: 8,
   },
+  buttonOrange: {
+    backgroundColor: '#FF9800',
+    padding: 12,
+    borderRadius: 8,
+    marginTop: 20,
+  },
   buttonText: { color: '#fff', fontWeight: 'bold' },
+  locationText: { marginTop: 20, fontSize: 16, color: '#333' },
   image: { width: '100%', height: 250, marginTop: 20, borderRadius: 10 },
   resultContainer: {
     marginTop: 20,
@@ -124,4 +154,10 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   resultText: { fontSize: 16, fontWeight: 'bold', color: '#333' },
+  buttonMap: {
+    backgroundColor: '#FF5722',
+    marginTop: 15,
+    padding: 12,
+    borderRadius: 8,
+  },
 });

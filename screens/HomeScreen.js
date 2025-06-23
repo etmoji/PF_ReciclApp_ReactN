@@ -27,8 +27,6 @@ export default function HomeScreen({ navigation }) {
 
   const centerContent = centers.map((center) => ({
     Name: center.Name,
-    Latitude: center.Latitude,
-    Longitude: center.Longitude,
     imageUrl: center.imageUrl,
     Description: center.Description,
     Address: center.Address,

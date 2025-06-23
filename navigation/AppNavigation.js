@@ -11,6 +11,8 @@ import CompostScreen from '../screens/CompostScreen';
 import GlassScreen from '../screens/GlassScreen'; 
 import WelcomeScreen from '../screens/WelcomeScreen';
 import CenterScreen from '../screens/CenterScreen';
+import MapScreen from '../screens/MapScreen';
+import WebViewScreen from '../screens/WebViewScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +24,16 @@ export default function AppNavigation() {
         component={WelcomeScreen}
         options={{ headerShown: false }}    
       />
+      <Stack.Screen
+        name="WebViewScreen"
+        component={WebViewScreen}
+        options={{ title: 'ReciclApp' }}
+      />
+      <Stack.Screen
+        name="MapScreen"
+        component={MapScreen}
+        options={{ title: 'Mapa de Centros de Acopio' }}
+        />
       <Stack.Screen
         name="MainTabs"
         component={BottomTabNavigator}
