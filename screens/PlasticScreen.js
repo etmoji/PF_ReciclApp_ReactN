@@ -46,7 +46,7 @@ export default function PlasticScreen() {
         </Text>
       </View>
 
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('HomeScreen')}>
         <Text style={styles.buttonText}>Volver</Text>
       </TouchableOpacity>
     </ScrollView>

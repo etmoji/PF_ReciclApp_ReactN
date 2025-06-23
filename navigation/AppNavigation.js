@@ -2,6 +2,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BottomTabNavigator from './BottomTabNavigator';
 import PlasticScreen from '../screens/PlasticScreen';
+import HomeScreen from '../screens/HomeScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,9 +15,14 @@ export default function AppNavigation() {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="Plastic"
+        name="PlasticScreen"
         component={PlasticScreen}
         options={{ title: 'Reciclaje de Plástico' }}
+      />
+      <Stack.Screen
+        name="HomeScreen"
+        component={HomeScreen} 
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );
