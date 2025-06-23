@@ -5,6 +5,8 @@ import HomeScreen from '../screens/HomeScreen';
 import CameraScreen from '../screens/CameraScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import { Ionicons } from '@expo/vector-icons';
+import PlasticScreen from '../screens/PlasticScreen';
+
 
 const Tab = createBottomTabNavigator();
 
