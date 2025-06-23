@@ -1,6 +1,5 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import { Ionicons } from '@expo/vector-icons';
@@ -12,9 +11,8 @@ const Tab = createBottomTabNavigator();
 
 export default function BottomTabNavigator() {
   return (
-    <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="Home"
+        initialRouteName="Inicio"
         screenOptions={({ route }) => ({
           headerShown: false,
           tabBarActiveTintColor: '#6B8E23',
@@ -41,6 +39,5 @@ export default function BottomTabNavigator() {
         <Tab.Screen name="Cámara" component={ScanScreen} />
         <Tab.Screen name="Opciones" component={ProfileScreen} />
       </Tab.Navigator>
-    </NavigationContainer>
   );
 }
