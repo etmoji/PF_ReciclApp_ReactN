@@ -7,6 +7,7 @@ import {
   Alert,
   TouchableOpacity,
   ActivityIndicator,
+  ScrollView,
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import * as Location from 'expo-location';
@@ -38,25 +39,34 @@ export default function ScanScreen({ navigation }) {
     }
 
     let pickerResult = fromCamera
-      ? await ImagePicker.launchCameraAsync({ base64: true, quality: 1 })
-      : await ImagePicker.launchImageLibraryAsync({ base64: true, quality: 1 });
+      ? await ImagePicker.launchCameraAsync({ quality: 1 })
+      : await ImagePicker.launchImageLibraryAsync({ quality: 1 });
 
     if (!pickerResult.canceled) {
       const selectedImage = pickerResult.assets[0];
       setImage(selectedImage.uri);
-      sendImageToApi(selectedImage.base64);
+      sendImageToApi(selectedImage.uri);
     }
   };
 
-  const sendImageToApi = async (base64Image) => {
+  const sendImageToApi = async (uri) => {
     try {
       setLoading(true);
       setResult(null);
 
+      const formData = new FormData();
+      formData.append('image', {
+        uri: uri,
+        type: 'image/jpeg',
+        name: 'image.jpg',
+      });
+
       const response = await fetch('http://192.168.1.66:5000/predict', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ image: base64Image }),
+        body: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       });
 
       const data = await response.json();
@@ -73,6 +83,15 @@ export default function ScanScreen({ navigation }) {
       setLoading(false);
     }
   };
+
+  const items = [
+    'Envases de plástico (botellas, tapas)',
+    'Papel y cartón (cajas, periódicos)',
+    'Desechos orgánicos (frutas, verduras)',
+    'Pilas y electrónicos',
+    'Envases metálicos',
+    'Botellas de vidrio',
+  ];
 
   return (
     <View style={styles.container}>
@@ -98,10 +117,10 @@ export default function ScanScreen({ navigation }) {
       {result && (
         <View style={styles.resultContainer}>
           <Text style={styles.resultText}>
-            Categoría: {result.category}
+            Categoría: {result.label}
           </Text>
           <Text style={styles.resultText}>
-            Confianza: {result.confidence}%
+            Confianza: {(result.confidence * 100).toFixed(2)}%
           </Text>
           <TouchableOpacity
             style={styles.buttonMap}
@@ -113,33 +132,30 @@ export default function ScanScreen({ navigation }) {
           </TouchableOpacity>
         </View>
       )}
+
+      {/* Nuevo recuadro */}
+      <View style={styles.infoBox}>
+        <Text style={styles.infoTitle}>¿Qué puedes escanear?</Text>
+        <ScrollView>
+          {items.map((item, index) => (
+            <Text key={index} style={styles.infoItem}>
+              {item}
+            </Text>
+          ))}
+        </ScrollView>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, alignItems: 'center' },
+  container: { flex: 1, padding: 20, alignItems: 'center', paddingHorizontal: 16, paddingTop: 60 },
   title: { fontSize: 28, fontWeight: 'bold', marginBottom: 10 },
   subtitle: { fontSize: 14, color: '#555', textAlign: 'center', marginBottom: 20 },
   buttonRow: { flexDirection: 'row', gap: 10 },
-  buttonGreen: {
-    backgroundColor: '#4CAF50',
-    padding: 12,
-    borderRadius: 8,
-  },
-  buttonBlue: {
-    backgroundColor: '#03A9F4',
-    padding: 12,
-    borderRadius: 8,
-  },
-  buttonOrange: {
-    backgroundColor: '#FF9800',
-    padding: 12,
-    borderRadius: 8,
-    marginTop: 20,
-  },
+  buttonGreen: { backgroundColor: '#4CAF50', padding: 12, borderRadius: 8 },
+  buttonBlue: { backgroundColor: '#03A9F4', padding: 12, borderRadius: 8 },
   buttonText: { color: '#fff', fontWeight: 'bold' },
-  locationText: { marginTop: 20, fontSize: 16, color: '#333' },
   image: { width: '100%', height: 250, marginTop: 20, borderRadius: 10 },
   resultContainer: {
     marginTop: 20,
@@ -154,10 +170,19 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   resultText: { fontSize: 16, fontWeight: 'bold', color: '#333' },
-  buttonMap: {
-    backgroundColor: '#FF5722',
-    marginTop: 15,
-    padding: 12,
-    borderRadius: 8,
+  buttonMap: { backgroundColor: '#FF5722', marginTop: 15, padding: 12, borderRadius: 8 },
+  infoBox: {
+    marginTop: 30,
+    padding: 15,
+    backgroundColor: '#4CAF50',
+    borderRadius: 10,
+    width: '100%',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    elevation: 3,
   },
+  infoTitle: { fontSize: 18, fontWeight: 'bold', color: '#fff', marginBottom: 10 },
+  infoItem: { fontSize: 16, color: '#fff', marginVertical: 4 },
 });

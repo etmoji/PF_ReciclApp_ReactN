@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: 'white',
     flexGrow: 1,
+    paddingHorizontal: 16, paddingTop: 60 
   },
   titulo: {
     fontSize: 26,

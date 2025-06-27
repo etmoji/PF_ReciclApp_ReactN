@@ -48,7 +48,7 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>ReciclApp</Text>
+      <Text style={styles.title}>ReciclaApp</Text>
       <Text style={styles.subtitle}>Encuentra puntos de acopio de reciclaje</Text>
 
       <View style={styles.tabs}>
